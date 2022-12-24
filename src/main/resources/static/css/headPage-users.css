@@ -1,0 +1,28 @@
+thead {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.icon {
+    opacity: .6;
+    transition: all .2s ease;
+}
+
+.icon:hover {
+    opacity: 1;
+}
+
+td {
+    position: relative;
+}
+
+input {
+    position: absolute;
+    opacity: .6;
+    transition: .3s;
+}
+
+input:hover {
+    border: none;
+    opacity: 1;
+}

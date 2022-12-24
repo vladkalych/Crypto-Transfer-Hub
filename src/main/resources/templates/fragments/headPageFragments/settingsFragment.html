@@ -1,0 +1,81 @@
+<div th:fragment="settingsFragment">
+    <main id="main">
+        <div class="overlay"></div>
+        <header class="header">
+            <h1 class="page-title"><a class="sidebar-toggle-btn trigger-toggle-sidebar"><span class="line"></span><span
+                    class="line"></span><span class="line"></span><span class="line line-angle1"></span><span
+                    class="line line-angle2"></span></a>Settings<a><span
+                    class="icon glyphicon glyphicon-chevron-down"></span></a></h1>
+            <p class="text-description mt-3" style="color: green" th:text="${information}"></p>
+            <p class="text-description mt-3" style="color: red" th:text="${error}"></p>
+        </header>
+
+        <div class="container-fluid mt-4 ms-2">
+            <form th:object="${connectionRequest}" th:action="@{/headPage/testConnection}" th:method="post">
+                <div style="display: inline-flex;  flex-wrap: wrap; gap: 50px;">
+                    <div style="width: 250px;">
+                        <text class="h5">Address service</text>
+                        <input class="form-control" type="text" aria-label="Address service" th:field="*{ipAddress}" th:placeholder="${addressServer}" style="width: 250px;  margin: 20px 0 0 0;">
+                    </div>
+                    <div style="width: 250px;">
+                        <text class="h5">Address service</text>
+                        <input class="form-control" type="text" aria-label="Port service" th:field="*{port}" th:placeholder="${portServer}" style="width: 250px;  margin: 20px 0 0 0;">
+                    </div>
+                </div>
+                <p >
+                    <button type="submit" class="sexy-btn" style="width: 250px; margin: 20px 0 0 0;">
+                        Connect to remote server
+                    </button>
+                <p class="text-description mt-3">If you don't have connection try change IP service. Maybe it's problem from
+                    our side</p>
+            </form>
+            <form th:object="${settingRequest}" th:action="@{/headPage/applySetting}" th:method="post">
+                <text class="h5">Server name</text>
+                <input th:field="*{serverID}" class="form-control w-25 mt-3" type="text" aria-label="Address Service"
+                       th:placeholder="${serverId}">
+                <p class="h5"></p>
+                <p class="h5">RSA Length key</p>
+                <select th:field="*{rsaLength}" class="form-select w-25 mt-3" aria-label="Length key">
+                    <option th:text="${rsaLen}" th:value="${rsaLen}" th:selected="${rsaLen}"></option>
+                    <option value="512">512</option>
+                    <option value="1024">1024</option>
+                    <option value="2048">2048</option>
+                </select>
+                <p class="text-description mt-3">The longest key will be the strongest</p>
+
+                <p class="h5">AES Length key</p>
+                <select th:field="*{aesLength}" class="form-select w-25 mt-3" aria-label="Length key">
+                    <option th:text="${aesLen}" th:value="${aesLen}" th:selected="${aesLen}"></option>
+                    <option value="128">128</option>
+                    <option value="192">192</option>
+                    <option value="256">256</option>
+                </select>
+                <p class="text-description mt-3">The longest key will be the strongest</p>
+
+                <p class="h5">Messange digest type</p>
+                <select th:field="*{hashType}" class="form-select w-25 mt-3" aria-label="Length key">
+                    <option th:text="${hash}" th:value="${hash}" th:selected="${hash}"></option>
+                    <option value="MD2">MD2</option>
+                    <option value="MD2">MD2</option>
+                    <option value="MD2">MD2</option>
+                    <option value="MD5">MD5</option>
+                    <option value="SHA-1">SHA-1</option>
+                    <option value="SHA-224">SHA-224</option>
+                    <option value="SHA-256">SHA-256</option>
+                    <option value="SHA-384">SHA-384</option>
+                    <option value="SHA-512">SHA-512</option>
+                    <option value="Купина">Купина</option>
+                </select>
+
+                <p class="h5" style="margin: 15px 0 0 0;">Number of picture</p>
+                <input th:field="*{imagesPoolCount}" class="form-control w-25" type="number" id="typeNumber" th:placeholder="${pool}">
+                <!-- Замість '1' поставити метод що витягує нинішнє значення -->
+                <p class="text-description mt-3">A large number of pictures increases the time of transmission of the message and reduces the profitability of revealing the message</p>
+                <div>
+                    <button type="submit" class="sexy-btn" style="width: 250px; margin: 15px 0 0 0;">Apply</button>
+                </div>
+            </form>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        </div>
+    </main>
+</div>

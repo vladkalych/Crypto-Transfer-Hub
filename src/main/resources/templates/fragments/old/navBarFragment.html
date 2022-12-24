@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-light shadow" id="navbar" th:fragment="navbarFragment">
+    <div class="container-fluid pe-0">
+        <a class="navbar-brand" th:href="@{/headPage/home}">CryptoChat</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <li class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/headPage/write}">Write</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/headPage/incoming}">Incoming</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/headPage/outcoming}">Outcoming</a>
+                </li>
+                <li class="nav-item"
+                    th:insert="~{fragments/navBarFragment :: (${admin} ? 'logsFragment' : 'emptyFragment')}">
+                </li>
+            </ul>
+        </li>
+
+        <div class="d-flex me-6">
+            <div class="btn-group">
+                <li class="nav-item dropdown d-flex">
+                    <a class="nav-link dropdown-toggle me-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img
+                                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                                class="rounded-circle"
+                                height="35"
+                                alt="Avatar"
+                                loading="lazy"
+                        />
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" th:href="@{/headPage/profile}">Profile</a></li>
+                        <li><a class="dropdown-item" th:href="@{/headPage/setting}">Setting</a></li>
+                        <li>
+                            <form action="/logout" method="POST">
+                                <button class="dropdown-item" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+            integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+            crossorigin="anonymous"></script>
+</nav>
+
+<a class="nav-link" th:fragment="logsFragment" th:href="@{/logs/error}">Logs</a>
+
+<div th:fragment="emptyFragment" style="display:none;"></div>
